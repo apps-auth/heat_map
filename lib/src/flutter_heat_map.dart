@@ -9,8 +9,9 @@ import 'components/processors/image_processor.dart';
 import 'models/page.dart';
 
 class HeatMap {
-  static Future<Uint8List?> process(HeatMapPage page, [Config? config]) =>
-      ImageProcessor.process(page, config ?? Config());
+  static Future<Uint8List?> process(HeatMapPage page,
+          [HeatMapConfig? config]) =>
+      ImageProcessor.process(page, config ?? HeatMapConfig());
 
   static Future<ui.Image> imageProviderToUiImage(ImageProvider imageProvider) =>
       ImageHelper.imageProviderToUiImage(imageProvider);

@@ -1,3 +1,6 @@
+# 1.1.0
+Add the option to draw the amount of events
+
 # 1.0.5
 Fix example
 

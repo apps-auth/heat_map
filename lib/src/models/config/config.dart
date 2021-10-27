@@ -1,4 +1,5 @@
-import 'package:enum_to_string/enum_to_string.dart';
+import 'package:flutter/painting.dart';
+
 import 'package:equatable/equatable.dart';
 
 import 'heat_map_style.dart';
@@ -8,7 +9,7 @@ import 'heat_map_style.dart';
 ///
 /// All properties can be changed at any moment.
 // ignore: must_be_immutable
-class Config extends Equatable {
+class HeatMapConfig extends Equatable {
   /// Specifies whether the library is currently active and collecting data.
   ///
 
@@ -34,39 +35,36 @@ class Config extends Equatable {
   /// Takes values between 0 and 1, it's set to 0.75 by default.
   double heatMapTransparency;
 
+  /// If true it will plot the quantity of events
+  bool drawQuantityOfEvent;
+
+  /// Text style of quantity of events
+  TextStyle styleQuantityOfEvent;
+
   /// Initializes the configuration.
-  Config({
+  HeatMapConfig({
     double? uiElementSize,
     HeatMapStyle? heatMapStyle,
     double? heatMapTransparency,
+    bool? drawQuantityOfEvent,
+    TextStyle? styleQuantityOfEvent,
   })  : assert(heatMapTransparency == null ||
             heatMapTransparency >= 0 && heatMapTransparency <= 255),
         uiElementSize = uiElementSize ?? 12,
         heatMapStyle = heatMapStyle ?? HeatMapStyle.smooth,
         heatMapTransparency =
-            (heatMapTransparency ?? 0.75).clamp(0, 1).toDouble();
-
-  /// Creates the configuration from a json map.
-  ///
-  /// Allows for easy parsing when fetching the config from a remote location.
-  ///
-  /// ### References
-  /// * [Example config file](https://github.com/stasgora/round-spot/blob/master/assets/example-config.json)
-  /// * [Schema for config validation](https://github.com/stasgora/round-spot/blob/master/assets/config-schema.json)
-  Config.fromJson(Map<String, dynamic> json)
-      : this(
-          uiElementSize: json['uiElementSize'].toDouble(),
-          heatMapStyle: json['heatMap']?['style'] != null
-              ? EnumToString.fromString(
-                  HeatMapStyle.values, json['heatMap']?['style'])
-              : null,
-          heatMapTransparency: json['heatMap']?['transparency'].toDouble(),
-        );
+            (heatMapTransparency ?? 0.75).clamp(0, 1).toDouble(),
+        drawQuantityOfEvent =
+            drawQuantityOfEvent ?? styleQuantityOfEvent == null,
+        styleQuantityOfEvent = styleQuantityOfEvent ??
+            const TextStyle(color: Color(0xff000000), fontSize: 35);
 
   @override
   List<Object?> get props => [
         uiElementSize,
         heatMapStyle,
         heatMapTransparency,
+        drawQuantityOfEvent,
+        styleQuantityOfEvent,
       ];
 }

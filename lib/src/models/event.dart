@@ -58,4 +58,7 @@ extension OffsetExtensions on Offset {
       Offset(map['x'].toDouble(), map['y'].toDouble());
 
   Map<String, dynamic> toMap() => {'x': dx, 'y': dy};
+
+  Offset copyWith({double? dx, double? dy}) =>
+      Offset(dx ?? this.dx, dy ?? this.dy);
 }

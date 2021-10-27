@@ -93,7 +93,10 @@ class _CreateHeatMapPageState extends State<CreateHeatMapPage> {
 
     HeatMapPage? data = await getHeatMapPage(page);
     if (data != null) {
-      Uint8List? bytes = await HeatMap.process(data);
+      Uint8List? bytes = await HeatMap.process(
+        data,
+        HeatMapConfig(drawQuantityOfEvent: true),
+      );
       if (bytes != null) {
         showViewResult(context, bytes);
       }
