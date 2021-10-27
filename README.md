@@ -3,15 +3,18 @@
 <div align="center">
   Customizable heat map interface library
 
+
 <img src="https://raw.githubusercontent.com/apps-auth/heat_map/master/assets/screens/page.png" style="width: 100%" alt="Banner"><br>
+</div>
+
 
 The heat_map simplifies the generation of heat maps.
 From a base image, it is necessary to pass the coordinates of the events and the library returns the image with the heat map
 This package is inspired by [round_spot](https://pub.dev/packages/round_spot)
-</div>
+
 
 ## Usage
-Import the package in your main file:
+Import the package:
 ```dart
 import 'package:heat_map/heat_map.dart';
 ```
@@ -58,12 +61,33 @@ Example of how to create `HeatMapPage`:
     }
   }
 
-Future<List<Event>> getEventsPerPage(String page) async => [
-        ..._generateEvents(1, const Offset(510, 340)),
-        ..._generateEvents(5, const Offset(820, 560)),
-        ..._generateEvents(100, const Offset(250, 1250)),
-        ..._generateEvents(1000, const Offset(760, 1250)),
-      ];
+  Future<List<Event>> getEventsPerPage(String page) async {
+    switch (page) {
+      case "first_page":
+        return [
+          ..._generateEvents(1, const Offset(510, 340)),
+          ..._generateEvents(5, const Offset(820, 560)),
+          ..._generateEvents(100, const Offset(250, 1250)),
+          ..._generateEvents(1000, const Offset(760, 1250)),
+        ];
+      case "second_page":
+        return [
+          ..._generateEvents(1000, const Offset(510, 340)),
+          ..._generateEvents(500, const Offset(820, 560)),
+          ..._generateEvents(100, const Offset(250, 1250)),
+          ..._generateEvents(10, const Offset(760, 1250)),
+        ];
+      case "generate_heatmap_page":
+        return [
+          ..._generateEvents(10, const Offset(510, 340)),
+          ..._generateEvents(500, const Offset(820, 560)),
+          ..._generateEvents(1500, const Offset(250, 1250)),
+          ..._generateEvents(5000, const Offset(760, 1250)),
+        ];
+      default:
+        return [];
+    }
+  }
 
   List<Event> _generateEvents(int length, Offset location) =>
       List<Event>.filled(length, Event(location: location));
