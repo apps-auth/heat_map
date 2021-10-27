@@ -53,7 +53,8 @@ class Event {
 }
 
 extension OffsetExtensions on Offset {
-  static fromMap(Map<String, dynamic> map) => Offset(map['x'], map['y']);
+  static fromMap(Map<String, dynamic> map) =>
+      Offset(map['x'].toDouble(), map['y'].toDouble());
 
   Map<String, dynamic> toMap() => {'x': dx, 'y': dy};
 }

@@ -7,12 +7,10 @@ import '../interfaces/interface.dart';
 class HeatMapLocalDataSource implements IHeatMapDataSource {
   @override
   Future<List<Event>> getEventsPerPage(String page) async => [
-        ..._generateEvents(1, const Offset(200, 400)),
-        ..._generateEvents(5, const Offset(300, 500)),
-        ..._generateEvents(10, const Offset(539, 1250)),
-        ..._generateEvents(10, const Offset(967, 2120)),
-        ..._generateEvents(100, const Offset(967, 2120)),
-        ..._generateEvents(1000, const Offset(960, 193)),
+        ..._generateEvents(1, const Offset(510, 340)),
+        ..._generateEvents(5, const Offset(820, 560)),
+        ..._generateEvents(100, const Offset(250, 1250)),
+        ..._generateEvents(1000, const Offset(760, 1250)),
       ];
 
   List<Event> _generateEvents(int length, Offset location) =>
