@@ -5,10 +5,10 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/painting.dart';
-import 'package:heat_map/src/models/config/config.dart';
-import 'package:heat_map/src/models/config/heat_map_style.dart';
-import 'package:heat_map/src/models/page.dart';
-import 'package:heat_map/src/utils/utils.dart';
+import 'package:flutter_heat_map/src/models/config/config.dart';
+import 'package:flutter_heat_map/src/models/config/heat_map_style.dart';
+import 'package:flutter_heat_map/src/models/page.dart';
+import 'package:flutter_heat_map/src/utils/utils.dart';
 
 import '../event_processor.dart';
 

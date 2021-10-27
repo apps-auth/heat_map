@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
 import 'package:example/data-sources/heat-map/interfaces/interface.dart';
 import 'package:flutter/widgets.dart';
-import 'package:heat_map/heat_map.dart';
+import 'package:flutter_heat_map/flutter_heat_map.dart';
 
 import 'interfaces/interface.dart';
 

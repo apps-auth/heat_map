@@ -5,7 +5,7 @@ import 'package:example/data-sources/heat-map/local/local.dart';
 import 'package:example/pages/view_results.dart';
 import 'package:example/repositories/heat-map/repository.dart';
 import 'package:flutter/material.dart';
-import 'package:heat_map/heat_map.dart';
+import 'package:flutter_heat_map/flutter_heat_map.dart';
 
 class CreateHeatMapPage extends StatefulWidget {
   const CreateHeatMapPage({Key? key}) : super(key: key);

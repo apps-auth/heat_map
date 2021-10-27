@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart' show ImageProvider;
 
-import '../heat_map.dart';
+import '../flutter_heat_map.dart';
 import 'components/image_helper.dart';
 import 'components/processors/image_processor.dart';
 import 'models/page.dart';

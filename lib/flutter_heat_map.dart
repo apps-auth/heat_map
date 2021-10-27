@@ -1,6 +1,6 @@
-library heat_map;
+library flutter_heat_map;
 
-export 'src/heat_map.dart';
+export 'src/flutter_heat_map.dart';
 
 export 'src/models/config/config.dart';
 export 'src/models/config/heat_map_style.dart' hide HeatMapLayerMultiplier;

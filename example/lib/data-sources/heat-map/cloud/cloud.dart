@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 // import 'package:example/utils/consts.dart';
 // import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
-import 'package:heat_map/heat_map.dart';
+import 'package:flutter_heat_map/flutter_heat_map.dart';
 import 'package:example/helpers/download/download_helper.dart';
 import '../interfaces/interface.dart';
 
@@ -46,7 +46,7 @@ class HeatMapCloudDataSource implements IHeatMapDataSource {
 
   Future<String> _getJsonFromGitHub() async {
     String url =
-        "https://raw.githubusercontent.com/apps-auth/heat_map/master/example/src/data_mock/heat_map_data_mock.json";
+        "https://raw.githubusercontent.com/apps-auth/flutter_heat_map/master/example/src/data_mock/heat_map_data_mock.json";
     http.Response response = await http.get(Uri.parse(url));
     return response.body;
   }
