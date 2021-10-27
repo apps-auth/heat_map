@@ -1,3 +1,6 @@
+# 1.0.3
+Update pubspec
+
 # 1.0.2
 Update readme
 
