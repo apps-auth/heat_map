@@ -1,6 +1,6 @@
 # <div align="center"><img src="https://raw.githubusercontent.com/apps-auth/heat_map/master/assets/logo.png" alt="icon" width="100"><br> Heat Map</div>
 
-##### <div align="center"> Customizable heat map interface library </div>
+### <div align="center"> Customizable heat map interface library </div>
 <div align="center">
 <img src="https://raw.githubusercontent.com/apps-auth/heat_map/master/assets/screens/page.png" style="width: 100%" alt="Banner"><br>
 </div>
