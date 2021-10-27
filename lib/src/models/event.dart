@@ -4,37 +4,38 @@ import 'dart:ui';
 import 'package:flutter/gestures.dart';
 
 /// Holds information about a single user interaction
-class Event {
+class HeatMapEvent {
   /// Equals [PointerEvent.localPosition]
   final Offset location;
 
-  /// Creates an [Event] with a given [location] and [id]
-  Event({this.location = Offset.zero});
+  /// Creates an [HeatMapEvent] with a given [location] and [id]
+  HeatMapEvent({this.location = Offset.zero});
 
-  Event copyWith({
+  HeatMapEvent copyWith({
     Offset? location,
   }) {
-    return Event(
+    return HeatMapEvent(
       location: location ?? this.location,
     );
   }
 
-  /// Creates an [Event] from Flutters [PointerEvent]
-  Event.fromPointer(PointerEvent event, Offset offset)
+  /// Creates an [HeatMapEvent] from Flutters [PointerEvent]
+  HeatMapEvent.fromPointer(PointerEvent event, Offset offset)
       : this(location: event.localPosition + offset);
 
-  factory Event.fromMap(Map<String, dynamic> map) {
-    return Event(
+  factory HeatMapEvent.fromMap(Map<String, dynamic> map) {
+    return HeatMapEvent(
       location: OffsetExtensions.fromMap(map['location']),
     );
   }
 
-  /// Converts this [Event] to a json map
+  /// Converts this [HeatMapEvent] to a json map
   Map<String, dynamic> toMap() => {
         'location': location.toMap(),
       };
 
-  factory Event.fromJson(String source) => Event.fromMap(json.decode(source));
+  factory HeatMapEvent.fromJson(String source) =>
+      HeatMapEvent.fromMap(json.decode(source));
 
   String toJson() => json.encode(toMap());
 
@@ -45,7 +46,7 @@ class Event {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Event && other.location == location;
+    return other is HeatMapEvent && other.location == location;
   }
 
   @override

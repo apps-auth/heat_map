@@ -10,11 +10,11 @@ import '../interfaces/interface.dart';
 
 class HeatMapCloudDataSource implements IHeatMapDataSource {
   @override
-  Future<List<Event>> getEventsPerPage(String page) async {
+  Future<List<HeatMapEvent>> getEventsPerPage(String page) async {
     Map<String, dynamic> map = await _getMap();
 
-    List<Event> events = List<Event>.from(
-        ((map[page]?['events']) ?? [])?.map((x) => Event.fromMap(x)));
+    List<HeatMapEvent> events = List<HeatMapEvent>.from(
+        ((map[page]?['events']) ?? [])?.map((x) => HeatMapEvent.fromMap(x)));
 
     return events;
   }

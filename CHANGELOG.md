@@ -1,3 +1,6 @@
+# 1.0.4
+Change Event to HeatMapEvent
+
 # 1.0.3
 Update pubspec
 
@@ -8,5 +11,4 @@ Update readme
 Fix example
 
 # 1.0.0
-
 Initial release

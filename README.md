@@ -40,7 +40,7 @@ Example of how to create `HeatMapPage`:
     if (provider == null) return null;
     ui.Image? image = await HeatMap.imageProviderToUiImage(provider);
 
-    List<Event> events = await dataSource.getEventsPerPage(page);
+    List<HeatMapEvent> events = await dataSource.getEventsPerPage(page);
 
     return HeatMapPage(image: image, events: events);
   }
@@ -59,7 +59,7 @@ Example of how to create `HeatMapPage`:
   }
 
   //View te session "Coordinates (Offset)"
-  Future<List<Event>> getEventsPerPage(String page) async {
+  Future<List<HeatMapEvent>> getEventsPerPage(String page) async {
     switch (page) {
       case "first_page":
         return [
@@ -87,8 +87,8 @@ Example of how to create `HeatMapPage`:
     }
   }
 
-  List<Event> _generateEvents(int length, Offset location) =>
-      List<Event>.filled(length, Event(location: location));
+  List<HeatMapEvent> _generateEvents(int length, Offset location) =>
+      List<HeatMapEvent>.filled(length, HeatMapEvent(location: location));
 ```
 
 ## Coordinates (Offset)

@@ -9,7 +9,7 @@ import 'event.dart';
 /// [area] on some [page] during some period of time.
 class HeatMapPage {
   /// Events registered in this [HeatMapPage]
-  List<Event> events = [];
+  List<HeatMapEvent> events = [];
 
   int get eventCount => events.length;
 

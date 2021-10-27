@@ -16,7 +16,7 @@ class HeatMapRepository implements IHeatMapRepository {
     if (provider == null) return null;
     ui.Image? image = await HeatMap.imageProviderToUiImage(provider);
 
-    List<Event> events = await dataSource.getEventsPerPage(page);
+    List<HeatMapEvent> events = await dataSource.getEventsPerPage(page);
 
     return HeatMapPage(image: image, events: events);
   }

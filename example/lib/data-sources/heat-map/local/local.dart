@@ -6,7 +6,7 @@ import '../interfaces/interface.dart';
 
 class HeatMapLocalDataSource implements IHeatMapDataSource {
   @override
-  Future<List<Event>> getEventsPerPage(String page) async {
+  Future<List<HeatMapEvent>> getEventsPerPage(String page) async {
     switch (page) {
       case "first_page":
         return [
@@ -34,8 +34,8 @@ class HeatMapLocalDataSource implements IHeatMapDataSource {
     }
   }
 
-  List<Event> _generateEvents(int length, Offset location) =>
-      List<Event>.filled(length, Event(location: location));
+  List<HeatMapEvent> _generateEvents(int length, Offset location) =>
+      List<HeatMapEvent>.filled(length, HeatMapEvent(location: location));
 
   @override
   Future<ImageProvider?> getImageProviderPerPage(String page) async {
