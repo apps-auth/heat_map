@@ -58,6 +58,7 @@ Example of how to create `HeatMapPage`:
     }
   }
 
+  //View te session "Coordinates (Offset)"
   Future<List<Event>> getEventsPerPage(String page) async {
     switch (page) {
       case "first_page":
@@ -89,6 +90,9 @@ Example of how to create `HeatMapPage`:
   List<Event> _generateEvents(int length, Offset location) =>
       List<Event>.filled(length, Event(location: location));
 ```
+
+## Coordinates (Offset)
+To get the exact coordinates in the images use [this link](https://yangcha.github.io/iview/iview.html)
 
 ## License
 This tool is licenced under [`MIT License`](https://github.com/apps-auth/heat_map/blob/master/LICENSE)
