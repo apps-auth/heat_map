@@ -2,7 +2,7 @@
 
 ### <div align="center"> Customizable heat map interface library </div>
 <div align="center">
-<img src="https://raw.githubusercontent.com/apps-auth/heat_map/master/assets/screens/page.png" style="width: 100% height: 100px" alt="Banner"><br>
+<img src="https://raw.githubusercontent.com/apps-auth/heat_map/master/assets/screens/page.png" style="width: 100%" alt="Banner"><br>
 </div>
 
 - The **heat_map** simplifies the generation of heat maps.
