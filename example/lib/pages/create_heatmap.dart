@@ -87,7 +87,9 @@ class _CreateHeatMapPageState extends State<CreateHeatMapPage> {
   Future<void> onPressed(
       String page, Future<HeatMapPage?> Function(String) getHeatMapPage) async {
     debugPrint("---- Start ----");
-    isGenerating = true;
+    setState(() {
+      isGenerating = true;
+    });
 
     HeatMapPage? data = await getHeatMapPage(page);
     if (data != null) {
@@ -97,7 +99,9 @@ class _CreateHeatMapPageState extends State<CreateHeatMapPage> {
       }
     }
 
-    isGenerating = false;
+    setState(() {
+      isGenerating = false;
+    });
     debugPrint("---- End ----");
   }
 
