@@ -1,16 +1,16 @@
 # <div align="center"><img src="https://raw.githubusercontent.com/apps-auth/heat_map/master/assets/logo.png" alt="icon" width="100"><br> Heat Map</div>
 
 <div align="center">
-  Customizable heat map interface library
+###### Customizable heat map interface library
 
 
 <img src="https://raw.githubusercontent.com/apps-auth/heat_map/master/assets/screens/page.png" style="width: 100%" alt="Banner"><br>
 </div>
 
 
-The heat_map simplifies the generation of heat maps.
-From a base image, it is necessary to pass the coordinates of the events and the library returns the image with the heat map
-This package is inspired by [round_spot](https://pub.dev/packages/round_spot)
+- The **heat_map** simplifies the generation of heat maps.
+- From a base image, it is necessary to pass the coordinates of the events and the library returns the image with the heat map
+- This package is inspired by **[round_spot](https://pub.dev/packages/round_spot)**
 
 
 ## Usage
