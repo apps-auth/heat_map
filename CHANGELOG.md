@@ -1,3 +1,6 @@
+# 1.0.5
+Fix example
+
 # 1.0.4
 Change Event to HeatMapEvent
 

@@ -1,6 +1,6 @@
 {
     "first_page": {
-        "image_url": "https://raw.githubusercontent.com/apps-auth/flutter_heat_map/master/example/src/images/first_page.png",
+        "image_url": "https://raw.githubusercontent.com/apps-auth/heat_map/master/example/src/images/first_page.png",
         "events": [
             {
                 "location": {
