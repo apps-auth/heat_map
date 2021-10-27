@@ -1,39 +1,73 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# <div align="center"><img src="https://raw.githubusercontent.com/apps-auth/heat_map/master/assets/logo.png" alt="icon" width="100"><br> Heat Map</div>
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+<div align="center">
+  Customizable heat map interface library
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+<img src="https://raw.githubusercontent.com/apps-auth/heat_map/master/assets/screens/page.png" style="width: 100%" alt="Banner"><br>
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+The heat_map simplifies the generation of heat maps.
+From a base image, it is necessary to pass the coordinates of the events and the library returns the image with the heat map
+This package is inspired by [round_spot](https://pub.dev/packages/round_spot)
+</div>
 
 ## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
+Import the package in your main file:
 ```dart
-const like = 'sample';
+import 'package:heat_map/heat_map.dart';
 ```
 
-## Additional information
+Create a `HeatMapPage`:
+```dart
+HeatMapPage data = await getHeatMapPage();
+```
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Process the data using `HeatMap.process(data)`:
+```dart
+Uint8List? bytes = await HeatMap.process(data);
+```
+
+Display the data on screen using `Image.memory(bytes)`:
+```dart
+Image.memory(bytes)
+```
+
+## Example
+See [sample application](https://github.com/apps-auth/heat_map/tree/master/example)
+Example of how to create `HeatMapPage`:
+```dart
+ Future<HeatMapPage?> getHeatMapPage(String page) async {
+    ImageProvider? provider = await dataSource.getImageProviderPerPage(page);
+    if (provider == null) return null;
+    ui.Image? image = await HeatMap.imageProviderToUiImage(provider);
+
+    List<Event> events = await dataSource.getEventsPerPage(page);
+
+    return HeatMapPage(image: image, events: events);
+  }
+
+  Future<ImageProvider?> getImageProviderPerPage(String page) async {
+    switch (page) {
+      case "first_page":
+        return const AssetImage(first_page);
+      case "second_page":
+        return const AssetImage(second_page);
+      case "generate_heatmap_page":
+        return const AssetImage(generate_heatmap_page);
+      default:
+        return null;
+    }
+  }
+
+Future<List<Event>> getEventsPerPage(String page) async => [
+        ..._generateEvents(1, const Offset(510, 340)),
+        ..._generateEvents(5, const Offset(820, 560)),
+        ..._generateEvents(100, const Offset(250, 1250)),
+        ..._generateEvents(1000, const Offset(760, 1250)),
+      ];
+
+  List<Event> _generateEvents(int length, Offset location) =>
+      List<Event>.filled(length, Event(location: location));
+```
+
+## License
+This tool is licenced under [`MIT License`](https://github.com/apps-auth/heat_map/blob/master/LICENSE)

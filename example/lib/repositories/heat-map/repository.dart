@@ -14,10 +14,10 @@ class HeatMapRepository implements IHeatMapRepository {
   Future<HeatMapPage?> getData(String page) async {
     ImageProvider? provider = await dataSource.getImageProviderPerPage(page);
     if (provider == null) return null;
-    ui.Image? background = await HeatMap.imageProviderToUiImage(provider);
+    ui.Image? image = await HeatMap.imageProviderToUiImage(provider);
 
     List<Event> events = await dataSource.getEventsPerPage(page);
 
-    return HeatMapPage(image: background, events: events);
+    return HeatMapPage(image: image, events: events);
   }
 }
