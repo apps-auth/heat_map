@@ -28,7 +28,7 @@ class ImageProcessor {
 
     var alpha = (config.heatMapTransparency * 255).toInt();
     canvas.saveLayer(null, Paint()..color = Color.fromARGB(alpha, 0, 0, 0));
-    _drawHeatMap(canvas, page, config);
+    await _drawHeatMap(canvas, page, config);
     canvas.restore();
 
     var canvasPicture = pictureRecorder.endRecording();
@@ -46,11 +46,15 @@ class ImageProcessor {
     return offset & (size * page.pixelRatio);
   }
 
-  static void _drawHeatMap(Canvas canvas, HeatMapPage page, Config config) {
+  static Future<void> _drawHeatMap(
+      Canvas canvas, HeatMapPage page, Config config) async {
     var clusterScale = config.uiElementSize * page.pixelRatio;
+
     transform(Offset o) => o * page.pixelRatio;
     var events = page.events.map((e) => transform(e.location)).toList();
+
     var heatMap = EventProcessor(events: events, pointProximity: clusterScale);
+    await heatMap.init();
 
     int layerCount() {
       if (heatMap.largestCluster == 1) return 1;
