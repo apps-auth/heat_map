@@ -1,3 +1,6 @@
+# 1.2.1
+Fix comments
+
 # 1.2.0
 Add HeatMapQuantityOfEvent
 
