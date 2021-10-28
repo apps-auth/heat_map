@@ -1,7 +1,6 @@
-import 'package:flutter/painting.dart';
-
 import 'package:equatable/equatable.dart';
 
+import 'heat_map_quantity_of_event.dart';
 import 'heat_map_style.dart';
 
 /// Holds the configuration relating to the
@@ -35,36 +34,28 @@ class HeatMapConfig extends Equatable {
   /// Takes values between 0 and 1, it's set to 0.75 by default.
   double heatMapTransparency;
 
-  /// If true it will plot the quantity of events
-  bool drawQuantityOfEvent;
-
-  /// Text style of quantity of events
-  TextStyle styleQuantityOfEvent;
+  /// Defines if and how the amount of each event will be displayed
+  HeatMapQuantityOfEvent quantityOfEvent;
 
   /// Initializes the configuration.
   HeatMapConfig({
     double? uiElementSize,
     HeatMapStyle? heatMapStyle,
     double? heatMapTransparency,
-    bool? drawQuantityOfEvent,
-    TextStyle? styleQuantityOfEvent,
+    HeatMapQuantityOfEvent? quantityOfEvent,
   })  : assert(heatMapTransparency == null ||
             heatMapTransparency >= 0 && heatMapTransparency <= 255),
         uiElementSize = uiElementSize ?? 12,
         heatMapStyle = heatMapStyle ?? HeatMapStyle.smooth,
         heatMapTransparency =
             (heatMapTransparency ?? 0.75).clamp(0, 1).toDouble(),
-        drawQuantityOfEvent =
-            drawQuantityOfEvent ?? styleQuantityOfEvent == null,
-        styleQuantityOfEvent = styleQuantityOfEvent ??
-            const TextStyle(color: Color(0xff000000), fontSize: 35);
+        quantityOfEvent = quantityOfEvent ?? HeatMapQuantityOfEvent();
 
   @override
   List<Object?> get props => [
         uiElementSize,
         heatMapStyle,
         heatMapTransparency,
-        drawQuantityOfEvent,
-        styleQuantityOfEvent,
+        quantityOfEvent,
       ];
 }

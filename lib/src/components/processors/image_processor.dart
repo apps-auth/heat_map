@@ -57,7 +57,7 @@ class ImageProcessor {
     transform(Offset o) => o * page.pixelRatio;
     List<Offset> events;
 
-    if (config.drawQuantityOfEvent) {
+    if (config.quantityOfEvent.enabled) {
       events = page.events.map((e) {
         Offset offset = transform(e.location);
         quantityOfEvent[offset] = (quantityOfEvent[offset] ?? 0) + 1;
@@ -87,27 +87,24 @@ class ImageProcessor {
       canvas.drawPath(heatMap.getPathLayer(fraction), paint);
     }
 
-    if (config.drawQuantityOfEvent) {
+    if (config.quantityOfEvent.enabled) {
       quantityOfEvent.forEach((key, value) => _drawQuantityOfEvent(
             canvas,
             value,
             key,
-            config.styleQuantityOfEvent,
+            config.quantityOfEvent,
           ));
     }
   }
-
-  static const double textWidth = 30;
-  static const double textHeight = 20;
 
   static void _drawQuantityOfEvent(
     Canvas canvas,
     int quantity,
     Offset offset,
-    TextStyle style,
+    HeatMapQuantityOfEvent quantityOfEvent,
   ) {
     TextSpan span = TextSpan(
-      style: style,
+      style: quantityOfEvent.textStyle,
       text: quantity.toString(),
     );
 
@@ -118,13 +115,7 @@ class ImageProcessor {
     );
 
     tp.layout();
-    tp.paint(
-      canvas,
-      offset.copyWith(
-        dx: offset.dx - textWidth,
-        dy: offset.dy - textHeight,
-      ),
-    );
+    tp.paint(canvas, quantityOfEvent.applyPaddingInOffset(offset));
   }
 
   static Color _getSpectrumColor(double value, {double alpha = 1}) =>

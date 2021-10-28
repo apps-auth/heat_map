@@ -1,3 +1,6 @@
+# 1.2.0
+Add HeatMapQuantityOfEvent
+
 # 1.1.0
 Add the option to draw the amount of events
 
